@@ -4,6 +4,7 @@
  */
 package com.hotel.roommgn.service;
 
+import com.hotel.roommgn.model.BookRoom;
 import com.hotel.roommgn.model.Room;
 import com.hotel.roommgn.repository.RoomRepository;
 import net.bytebuddy.description.method.ParameterList;
@@ -46,5 +47,10 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void deleteRoomById(Long id) {
         roomRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean isRoomAvailable(BookRoom bookRoom) {
+        return false;
     }
 }

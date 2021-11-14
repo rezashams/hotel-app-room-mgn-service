@@ -7,3 +7,10 @@
     room_description VARCHAR(255)
     );
 
+     CREATE TABLE book_room (
+        id INT AUTO_INCREMENT  PRIMARY KEY,
+        date_from DATE NOT NULL,
+        date_to DATE NOT NULL,
+          foreign key (room_id) references room(id)
+        );
+

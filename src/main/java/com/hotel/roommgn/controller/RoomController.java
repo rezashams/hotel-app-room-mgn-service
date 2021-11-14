@@ -29,9 +29,33 @@ public class RoomController {
         return roomService.findAll();
     }
 
-    @PostMapping("/delete/room/{id}")
+    @GetMapping("/room/{id}")
+    public Room getRoom(@PathVariable("id") Long id) {
+        return roomService.getRoomById(id);
+    }
+
+    @GetMapping("/room/available")
+    public Boolean isRoomAvailable(@RequestBody Room room) {
+       // TODO implement
+        return false;
+    }
+
+    @PostMapping("/room/update/{id}")
+    public ResponseEntity<Room> updateRoom(@PathVariable("id") Long id, @RequestBody Room room) {
+        room.setId(id);
+        Room updatedRoom = roomService.updateRoom(room);
+        return new ResponseEntity<>(updatedRoom, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/room/delete/{id}")
     public ResponseEntity<String> deleteRoom(@PathVariable("id") Long id) {
             roomService.deleteRoomById(id);
             return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+    }
+
+    @PostMapping("/room/create")
+    public ResponseEntity<Room> createRoom(@RequestBody Room room) {
+        Room createdRoom = roomService.saveRoom(room);
+        return new ResponseEntity<>(createdRoom, HttpStatus.CREATED);
     }
 }

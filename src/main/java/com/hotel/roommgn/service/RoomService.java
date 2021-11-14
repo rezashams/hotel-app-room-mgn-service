@@ -1,6 +1,7 @@
 package com.hotel.roommgn.service;
 
 
+import com.hotel.roommgn.model.BookRoom;
 import com.hotel.roommgn.model.Room;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface RoomService {
     Room updateRoom(Room room);
 
     void deleteRoomById(Long id);
+
+    boolean isRoomAvailable(BookRoom bookRoom);
 }

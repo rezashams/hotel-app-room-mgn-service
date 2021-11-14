@@ -32,6 +32,8 @@ public class DataLoader implements CommandLineRunner {
         room2.setDescription("The second room");
         roomService.saveRoom(room2);
 
+
+
         System.out.println("Load Data ...");
     }
 }
