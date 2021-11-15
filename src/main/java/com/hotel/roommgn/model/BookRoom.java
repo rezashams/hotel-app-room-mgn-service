@@ -5,7 +5,6 @@
 package com.hotel.roommgn.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 

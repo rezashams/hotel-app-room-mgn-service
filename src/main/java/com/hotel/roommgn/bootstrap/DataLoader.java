@@ -4,10 +4,16 @@
  */
 package com.hotel.roommgn.bootstrap;
 
+import com.hotel.roommgn.model.BookRoom;
 import com.hotel.roommgn.model.Room;
 import com.hotel.roommgn.service.RoomService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -32,8 +38,12 @@ public class DataLoader implements CommandLineRunner {
         room2.setDescription("The second room");
         roomService.saveRoom(room2);
 
-
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        BookRoom bookRoom =new BookRoom();
+        bookRoom.setRoomId(2);
+        bookRoom.setFromDate(formatter.parse("2018-05-11"));
+        bookRoom.setToDate( formatter.parse("2018-05-15"));
+        roomService.saveBookRoom(bookRoom);
         System.out.println("Load Data ...");
     }
 }

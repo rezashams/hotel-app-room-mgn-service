@@ -6,8 +6,8 @@ package com.hotel.roommgn.service;
 
 import com.hotel.roommgn.model.BookRoom;
 import com.hotel.roommgn.model.Room;
+import com.hotel.roommgn.repository.BookRoomRepository;
 import com.hotel.roommgn.repository.RoomRepository;
-import net.bytebuddy.description.method.ParameterList;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,9 +17,11 @@ import java.util.List;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
+    private final BookRoomRepository bookRoomRepository;
 
-    public RoomServiceImpl(RoomRepository roomRepository) {
+    public RoomServiceImpl(RoomRepository roomRepository, BookRoomRepository bookRoomRepository) {
         this.roomRepository = roomRepository;
+        this.bookRoomRepository = bookRoomRepository;
     }
 
     @Override
@@ -52,5 +54,10 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public boolean isRoomAvailable(BookRoom bookRoom) {
         return false;
+    }
+
+    @Override
+    public BookRoom saveBookRoom(BookRoom bookRoom) {
+        return bookRoomRepository.save(bookRoom);
     }
 }

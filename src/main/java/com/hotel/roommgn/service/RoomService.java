@@ -19,4 +19,6 @@ public interface RoomService {
     void deleteRoomById(Long id);
 
     boolean isRoomAvailable(BookRoom bookRoom);
+
+    BookRoom saveBookRoom(BookRoom bookRoom);
 }
