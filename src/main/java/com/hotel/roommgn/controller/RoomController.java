@@ -5,6 +5,7 @@
 package com.hotel.roommgn.controller;
 
 
+import com.hotel.roommgn.model.BookRoom;
 import com.hotel.roommgn.model.Room;
 import com.hotel.roommgn.service.RoomService;
 import org.springframework.http.HttpStatus;
@@ -34,10 +35,9 @@ public class RoomController {
         return roomService.getRoomById(id);
     }
 
-    @GetMapping("/room/available")
-    public Boolean isRoomAvailable(@RequestBody Room room) {
-       // TODO implement
-        return false;
+    @PostMapping("/room/available")
+    public Boolean isRoomAvailable(@RequestBody BookRoom bookRoom) {
+        return roomService.isRoomAvailable(bookRoom);
     }
 
     @PostMapping("/room/update/{id}")

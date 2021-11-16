@@ -10,6 +10,7 @@ import com.hotel.roommgn.repository.BookRoomRepository;
 import com.hotel.roommgn.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean isRoomAvailable(BookRoom bookRoom) {
-        return false;
+        return bookRoomRepository.isRoomAvailable(bookRoom.getRoomId(),
+                new SimpleDateFormat("yyyy-MM-dd").format(bookRoom.getFromDate()),
+                new SimpleDateFormat("yyyy-MM-dd").format(bookRoom.getToDate()));
     }
 
     @Override
