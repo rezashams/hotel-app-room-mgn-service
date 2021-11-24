@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -28,7 +29,10 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<Room> findAll() {
         List<Room> rooms = new ArrayList<>();
-        roomRepository.findAll().forEach(rooms::add);
+        Iterator<Room> roomIterator= roomRepository.findAll().iterator();
+        while(roomIterator.hasNext()) {
+            rooms.add(roomIterator.next());
+        }
         return rooms;
     }
 
@@ -39,7 +43,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room getRoomById(Long id) {
-        return roomRepository.findById(id).orElse(null);
+        return roomRepository.findById(id);
     }
 
     @Override

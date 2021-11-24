@@ -58,4 +58,9 @@ public class RoomController {
         Room createdRoom = roomService.saveRoom(room);
         return new ResponseEntity<>(createdRoom, HttpStatus.CREATED);
     }
+    @PostMapping("/room/book")
+    public ResponseEntity<BookRoom> createBook(@RequestBody BookRoom bookRoom) {
+        BookRoom saveBookRoom = roomService.saveBookRoom(bookRoom);
+        return new ResponseEntity<>(saveBookRoom, HttpStatus.CREATED);
+    }
 }

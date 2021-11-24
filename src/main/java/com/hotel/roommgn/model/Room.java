@@ -6,12 +6,12 @@ package com.hotel.roommgn.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="room")
 @Table(name="room")
 public class Room {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @Column(name = "room_name", nullable = false)
